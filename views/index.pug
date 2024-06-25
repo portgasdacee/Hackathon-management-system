@@ -1,0 +1,116 @@
+extends base
+
+block content 
+    if (!user)
+        h1 Hackathon Management System
+        .row 
+            .create_section
+                h1 Login 
+                form.form.createform(action="/account/login" method="POST")
+                    label Email:
+                    label.noemail.hidden.red Email not found!
+                    input.loginemail(name="loginemail" type="email" placeholder="user@email.com" required)
+                    label Password:
+                    label.nopwd.hidden.red Password does not match! 
+                    label.smallpwd.hidden.red Password must be atleast 6 characters long
+                    input.loginpassword(type="password" name="loginpassword" placeholder="*********" required)
+                    input.btn.loginbtn(type="submit" value="Login")
+            .create_section
+                h1 SignUp 
+                form.form.createform(action="/account/signup" method="POST")
+                    label Username:
+                    input#user(type="text" name="name" placeholder="username" required)
+                    label Email:
+                    label.sameemail.hidden.red User with this email already exists!
+                    input.signupemail(name="email" type="email" placeholder="user@email.com" required)
+                    label Password (must be 6 character long):
+                    label.shortpwd.hidden.red Password must be atleast 6 character long
+                    input.signuppassword(type="password" name="password" placeholder="*********" required)
+                    label Confirm Password:
+                    label.wrgpwd.hidden.red Password doesnot match
+                    input.signuppasswordconfirm(type="password" name="passwordConfirm" placeholder="*********" required)
+                    input.btn.signupbutton(type="submit" value="Signup")
+            
+    else
+        .row
+            .create_section
+                h1 Make An Entry
+                form.form.createform(action="/" method="POST")
+                    label Title:
+                    input#title(type="text" name="Title" placeholder="Title" required)
+                    label Description:
+                    textarea(name="Description" placeholder="Description" required)
+                    label Total Number of Participants:
+                    label.nan.hidden.red Please give a number
+                    input.tparticipants(type="number" name="Participants" placeholder="Number Of Participants" required)
+                    label Location:
+                    input(type="text" name="Address" placeholder="Address" required)
+                    label Start Date:
+                    input(type="date" name="Start" placeholder="" required)
+                    label End Date:
+                    input(type="date" name="End" placeholder="" required)
+                    input.btn.createentry(type="submit")
+            .entries_section
+                h1 Filter Search
+                .search_bod
+                    .col
+                        input.searchbar(type= "text", name="searchvalue" placeholder="search" required)
+                        button.searchbutton.btn(value="filter") Search
+                    .col
+                        input.dateSearch(type="date", name="dateSearch" required)
+                        button.dateSearchButton.btn(value="dateFilter") Filter
+                .filtered_section.hidden
+                    .modal 
+                        .modal_head 
+                            h1 Filtered Results
+                            button#closeFilter.closebtn Close 
+                        .filterEntryTitle 
+                if (entries)
+                    h1 All The Entries 
+                    .allentries
+                        each entry in entries 
+                            .card
+                                h3.entryTitle= entry.Title
+                                .btn_grp
+                                    button.update.btn(id= entry.id) Update
+                                    button.delete.btn(id= entry.id) Delete
+                else 
+                    h1 No Entries So Far!
+        .update_section.hidden
+            .modal
+                .modal_head
+                    h1 Update An Entry
+                    button#closeUpdate.closebtn Close
+                form.form(action="/updateEntry" method="POST")
+                    label Title:
+                    input#uptitle(type="text" name="Title" placeholder="" required)
+                    label Description:
+                    textarea#updescription(name="Description" placeholder="" required)
+                    label Total Number of Participants:
+                    input#upparticipants(type="number" name="Participants" placeholder="" required)
+                    label Location:
+                    input#uplocation(type="text" name="Address" placeholder="Address" required)
+                    label Start Date:
+                    input#upstart(type="date" name="Start" placeholder="" required)
+                    label End Date:
+                    input#upend(type="date" name="End" placeholder="" required)
+                    input#upIdInput(type="text" name="upId").hidden
+                    input.btn(type="submit")
+        .delete_section.hidden
+            .modal 
+                .modal_head
+                    h1.deleteentryhead Delete
+                    button#closeDelete.closebtn Close
+                form.form(action="/deleteEntry", method="POST")
+                    label Are you sure you want to delete?
+                    input#delTitleInput(type="text" name="delId").hidden
+                    input.btn(type="submit" value="Yes")
+        .detail_section.hidden 
+        .greet Hi,
+            span= user.name
+        .logout Signout
+        .signupbutton.hidden
+        .loginbtn.hidden
+        script(src="/js/index.js")  
+        script(src="/js/search.js") 
+    script(src="/js/valid.js") 

@@ -1,0 +1,198 @@
+*{
+    font-family: monospace;
+    font-size: 16px;
+}
+
+h1{
+    text-align: center;
+    font-size: 24px;
+}
+
+textarea{
+    resize: none;
+}
+
+input[type=date]{
+    width: fit-content;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+input, textarea{
+    margin-bottom: 4%;
+    border-radius: .5rem;
+    border: 1px solid gray;
+}
+
+.hidden{
+    display: none;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+}
+
+.entryTitle{
+    cursor: pointer;
+}
+
+.entryTitle:hover{
+    color: teal;
+}
+
+.update_section{
+    width: 100%;
+}
+
+.detail_section{
+    width: 100vw;
+}
+
+.create_section{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.createform{
+    width: 40vw;
+}
+
+.btn{
+    padding: 1%;
+    margin: 1%;
+    border: none;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bolder;
+    background-color: teal;
+    cursor: pointer;
+}
+
+.search_bod{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.col{
+    width: 50%;
+}
+
+.delete{
+    background-color: crimson;
+}
+
+.entries_section{
+    width: 50%;
+}
+
+.allentries{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    justify-content: left;
+    height: 70vh;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+}
+
+.card .btn_grp .btn{
+    padding: 2%;
+}
+
+.btn_grp{
+    display: flex;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 40vw;
+    padding: 2%;
+    background-color: white;
+    border: 1px solid gray;
+    color: Black;
+    border-radius: 2rem;
+}
+    
+.filterEntryTitle{
+    overflow: auto;
+    scrollbar-width: none;
+    height: 80vh;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closebtn{
+    color: white;
+    background-color: crimson;
+    border-radius: 2rem;
+    border: none;
+    padding: 2%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter_bod{
+    display: flex;
+    flex-direction: column;
+}
+
+.update, .delete{
+    cursor: pointer;
+}
+
+.logout{
+    position: fixed;
+    bottom: 5vh;
+    left: 1vw;
+    background-color: rgba(220, 20, 60, 0.658);
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 1%;
+    border-radius: .5rem;
+}
+
+.logout:hover{
+    background-color: crimson;
+}
+
+.greet{
+    position: absolute;
+    top: 1vh;
+    right: 2vw;
+}
+
+.red{
+    color: crimson;
+}
